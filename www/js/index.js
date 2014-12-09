@@ -39,7 +39,7 @@ angular.module("app").factory("Session", function ($http) {
     var sid, token, apikey;
 
     this.create = function () {
-        return $http.post("/api/opentok", {}).then(function (result) {
+        return $http.post("yyy", {}).then(function (result) {
             sid = result.data.sessionId;
             token = result.data.token;
             apikey = result.data.apiKey
@@ -47,7 +47,7 @@ angular.module("app").factory("Session", function ($http) {
     }
 
     this.join = function () {
-        return $http.get("/api/opentok").then(function (result) {
+        return $http.get("xxx").then(function (result) {
             sid = result.data.sessionId;
             token = result.data.token;
             apikey = result.data.apiKey
@@ -87,6 +87,8 @@ angular.module("app").controller("VideoController", function ($scope, $location,
     $scope.hangup = function () {
         $location.path("/");
     }
+    $scope.media = new Media("./match.mp3");
+    $scope.media.play();
     $scope.session = TB.initSession(Session.getApiKey(), Session.getSID());
     $scope.session.on({
         connectionCreated: function () {
